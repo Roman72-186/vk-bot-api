@@ -22,9 +22,6 @@ export default async function handler(req, res) {
   const response = await fetch(url);
   const data = await response.json();
 
-  if (data.error?.error_code === 5) {
-    return res.status(401).json({ error: 'token_expired' });
-  }
-
+  // Возвращаем ответ ВК как есть — чтобы видеть реальную ошибку
   res.status(200).json(data);
 }
